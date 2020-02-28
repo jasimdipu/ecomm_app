@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bketon</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_message">Messages</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
+    <string name="free_dalivary">Free Dalivary</string>
+    <string name="free_shipping">Free Shipping</string>
+    <string name="global_collection">Global Collection</string>
+    <string name="top_up">Top Up</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

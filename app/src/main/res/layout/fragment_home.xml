@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/homeLL"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/homeFragmentCarouselView"
+            app:slideInterval="2000"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="1dp"
+            app:radius="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"/>
+
+        <LinearLayout
+            android:id="@+id/menuHomeFragLL"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/freeShipping"
+                android:src="@drawable/freeshipping"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/giftsCard"
+                android:src="@drawable/freeshipping"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/campaigns"
+                android:src="@drawable/gloabalcollection"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/orders"
+                android:src="@drawable/top_up"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+       <LinearLayout
+            android:id="@+id/titleHomeFragLL"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:src="@drawable/freedelivary"
+                android:text="@string/free_shipping"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:src="@drawable/freeshipping"
+                android:text="@string/free_dalivary"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:src="@drawable/gloabalcollection"
+                android:text="@string/global_collection"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:src="@drawable/top_up"
+                android:text="@string/top_up"
+                android:layout_marginLeft="0dp"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeFragCategoryRecyclerView"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
