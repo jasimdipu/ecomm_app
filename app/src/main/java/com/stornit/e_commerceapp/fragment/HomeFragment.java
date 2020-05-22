@@ -34,14 +34,16 @@ import java.util.List;
 
 import retrofit2.Retrofit;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 public class HomeFragment extends Fragment {
 
     private CarouselView carouselView;
     private int[] carouselImage = {
-            R.drawable.banner1, R.drawable.banner2, R.drawable.global, R.drawable.savings,
+            R.drawable.banner1, R.drawable.banner2, R.drawable.global, R.drawable.vagitable1, R.drawable.vagitable2,
     };
     private static final String TAG = HomeFragment.class.getSimpleName();
-    private static final String URL = "https://bketon.com/ecommerce/public/api/category";
+    private static final String URL = "api/categories";
 
     private Retrofit retrofit;
     private RecyclerView categoryRecyclerView;
@@ -52,7 +54,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance(String param1, String param2){
+    public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment homeFragment = new HomeFragment();
         Bundle args = new Bundle();
         homeFragment.setArguments(args);
@@ -68,7 +70,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -94,16 +95,17 @@ public class HomeFragment extends Fragment {
         }
     };
 
-    private void fetchCategoryItems(){
+    private void fetchCategoryItems() {
         JsonArrayRequest request = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 if (response == null) {
-                    Toast.makeText(getActivity(), "Couldn't fetch the category Item", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Couldn't fetch the category Item", LENGTH_LONG).show();
                     return;
                 }
 
-                List<Category> categories = new Gson().fromJson(response.toString(), new TypeToken<List<Category>>(){}.getType());
+                List<Category> categories = new Gson().fromJson(response.toString(), new TypeToken<List<Category>>() {
+                }.getType());
                 categoryList.clear();
                 categoryList.addAll(categories);
 
@@ -112,7 +114,7 @@ public class HomeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: "+error.getMessage());
+                Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getActivity(), "Error: " + error.getStackTrace().toString(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -120,7 +122,7 @@ public class HomeFragment extends Fragment {
         MyApplication.getInstance().addToRequestQueue(request);
     }
 
-    private int dpToPx(int dp){
+    private int dpToPx(int dp) {
         Resources resources = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics()));
     }

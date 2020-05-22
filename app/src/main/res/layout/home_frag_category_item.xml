@@ -14,8 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/categoryRL"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -31,15 +32,14 @@
             <TextView
                 android:id="@+id/categoryTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/categoryImage"
+                android:layout_height="200dp"
                 android:lines="2"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="20dp"
                 android:textColor="#111"
                 android:textSize="12sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

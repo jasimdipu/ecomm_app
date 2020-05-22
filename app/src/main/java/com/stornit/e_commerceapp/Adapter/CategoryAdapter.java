@@ -17,11 +17,14 @@ import com.stornit.e_commerceapp.models.Category;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
+
     private Context context;
     private List<Category> categoryList;
+    private int rowLayout;
 
-    public CategoryAdapter(Context context, List<Category> categoryList) {
+    public CategoryAdapter(Context context, int rowLayout, List<Category> categoryList) {
         this.context = context;
+        this.rowLayout = rowLayout;
         this.categoryList = categoryList;
     }
 
@@ -29,7 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.home_frag_category_item, parent, false);
+                .inflate(R.layout.category_list_item, parent, false);
 
         return new CategoryViewHolder(view);
     }
@@ -39,8 +42,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         final Category category = categoryList.get(position);
 
-        holder.categoryTitle.setText(category.getCategory_name());
-        Glide.with(context).load(category.getPhoto()).into(holder.categoryPhoto);
+        holder.categoryName.setText(category.getCategoryName());
+        holder.categoryNameBangla.setText(category.getCategoryNameBangla());
+        holder.description.setText(category.getDescription());
     }
 
     @Override
@@ -48,15 +52,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categoryList.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder {
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView categoryPhoto;
-        public TextView categoryTitle;
+        public TextView categoryName;
+        public TextView categoryNameBangla;
+        public TextView description;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryPhoto = itemView.findViewById(R.id.categoryImage);
-            categoryTitle = itemView.findViewById(R.id.categoryTitle);
+            categoryName = itemView.findViewById(R.id.categoryName);
+            categoryNameBangla = itemView.findViewById(R.id.categoryNameBangla);
+            description = itemView.findViewById(R.id.description);
         }
     }
 }

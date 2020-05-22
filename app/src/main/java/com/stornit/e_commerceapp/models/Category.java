@@ -1,39 +1,38 @@
 package com.stornit.e_commerceapp.models;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Category {
-    @SerializedName("category_name")
-    private String category_name;
-    @SerializedName("photo")
-    private String photo;
 
-    public Category(String category_name, String photo) {
-        this.category_name = category_name;
-        this.photo = photo;
+    int CategoryId;
+    String CategoryName;
+    int CategoryImg;
+
+    public Category(int categoryId, String categoryName, int categoryImg) {
+        CategoryId = categoryId;
+        CategoryName = categoryName;
+        CategoryImg = categoryImg;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public int getCategoryId() {
+        return CategoryId;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryId(int categoryId) {
+        CategoryId = categoryId;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getCategoryName() {
+        return CategoryName;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setCategoryName(String categoryName) {
+        CategoryName = categoryName;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "category_name='" + category_name + '\'' +
-                ", photo='" + photo + '\'' +
-                '}';
+    public int getCategoryImg() {
+        return CategoryImg;
+    }
+
+    public void setCategoryImg(int categoryImg) {
+        CategoryImg = categoryImg;
     }
 }
