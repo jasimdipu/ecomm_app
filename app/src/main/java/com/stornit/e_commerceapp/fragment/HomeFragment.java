@@ -30,6 +30,7 @@ import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -70,6 +71,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        categoryList = new ArrayList<>();
+        categoryList.add(new Category(1, "Milk", R.drawable.d1));
+        categoryList.add(new Category(2, "Ice Cream", R.drawable.d2));
+        categoryList.add(new Category(4, "Bread", R.drawable.banner2));
+        categoryList.add(new Category(5, "Fuchka", R.drawable.d2));
+
+
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -78,12 +88,15 @@ public class HomeFragment extends Fragment {
         carouselView.setImageListener(imageListener);
 
         categoryRecyclerView = view.findViewById(R.id.homeFragCategoryRecyclerView);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categoryList);
 
         RecyclerView.LayoutManager categoryLayoutManger = new GridLayoutManager(this.getActivity(), 4);
         categoryRecyclerView.setLayoutManager(categoryLayoutManger);
-        categoryRecyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(4), true));
+        categoryRecyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(1), false));
         categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
         categoryRecyclerView.setNestedScrollingEnabled(false);
+
+        categoryRecyclerView.setAdapter(categoryAdapter);
 
         return view;
     }
